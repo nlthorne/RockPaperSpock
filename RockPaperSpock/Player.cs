@@ -12,7 +12,11 @@ namespace RockPaperSpock
         //public string playerTwo;
         public int numberOfPlayers;
         public string name;
-        
+        Random randomInt = new Random();
+        public int playerOneInput;
+        public int playerTwoInput;
+
+
 
         public Player()
         {
@@ -23,7 +27,8 @@ namespace RockPaperSpock
             Random random = new Random();
             int randomInt;
             randomInt = random.Next(1, 6);
-            return randomInt;
+            playerTwoInput = randomInt;
+            return playerTwoInput;
         }
 
     }

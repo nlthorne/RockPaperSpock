@@ -16,6 +16,7 @@ namespace RockPaperSpock
         Player playerTwo;
         public List<string> playerNames;
         public int numberOfPlayers;
+        Random randomInt = new Random();
 
         public Game()
         {
@@ -55,7 +56,12 @@ namespace RockPaperSpock
         {
             if (playerTwo.name == "Computer")
             {
-                GetComputerSelection();
+                //GetComputerSelection();
+                //return playerTwoInput;
+                Random random = new Random();
+                int randomInt;
+                randomInt = random.Next(1, 6);
+                playerTwoInput = randomInt;
                 return playerTwoInput;
             }
             else
@@ -116,11 +122,11 @@ namespace RockPaperSpock
         {
             if (scorePlayerOne == 3)
             {
-                Console.WriteLine("{0} Wins!! \n", playerOne.name);
+                Console.WriteLine("{0} wins the game!! \n", playerOne.name);
             }
             else if (scorePlayerTwo == 3)
             {
-                Console.WriteLine("{0} Wins!! \n", playerTwo.name);
+                Console.WriteLine("{0} wins the game!! \n", playerTwo.name);
             }
         }
         public void KeepTrackScore()
@@ -129,17 +135,11 @@ namespace RockPaperSpock
             {
                 GetPlayerOneInput();
                 GetPlayerTwoInput();
-                CheckFinalScore();
                 RunGame();
+                CheckFinalScore();
             }
         }
-        public int GetComputerSelection()
-        {
-            Random random = new Random();
-            int randomInt;
-            randomInt = random.Next(1, 6);
-            return randomInt;
-        }
+        
 
     }
 }
