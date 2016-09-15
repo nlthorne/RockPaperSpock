@@ -16,7 +16,7 @@ namespace RockPaperSpock
             game.GetPlayerOneInput();
             game.GetPlayerTwoInput();
             game.RunGame();
-            game.KeepTrackScore();//not printing final winner
+            game.KeepTrackScore();
             Console.Read();
 
 
