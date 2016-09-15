@@ -1,0 +1,6 @@
+C:\Users\nltho\Documents\GitHub\RockPaperSpock\RockPaperSpock\RockPaperSpock\bin\Debug\RockPaperSpock.exe.config
+C:\Users\nltho\Documents\GitHub\RockPaperSpock\RockPaperSpock\RockPaperSpock\obj\Debug\RockPaperSpock.csprojResolveAssemblyReference.cache
+C:\Users\nltho\Documents\GitHub\RockPaperSpock\RockPaperSpock\RockPaperSpock\bin\Debug\RockPaperSpock.exe
+C:\Users\nltho\Documents\GitHub\RockPaperSpock\RockPaperSpock\RockPaperSpock\bin\Debug\RockPaperSpock.pdb
+C:\Users\nltho\Documents\GitHub\RockPaperSpock\RockPaperSpock\RockPaperSpock\obj\Debug\RockPaperSpock.exe
+C:\Users\nltho\Documents\GitHub\RockPaperSpock\RockPaperSpock\RockPaperSpock\obj\Debug\RockPaperSpock.pdb
