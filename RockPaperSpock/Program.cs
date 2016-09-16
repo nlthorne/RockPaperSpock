@@ -11,12 +11,7 @@ namespace RockPaperSpock
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.GetNumberOfPlayers();
-            game.SetNumberOfPlayers();
-            game.GetPlayerOneInput();
-            game.GetPlayerTwoInput();
             game.RunGame();
-            game.KeepTrackScore();
             Console.Read();
 
 

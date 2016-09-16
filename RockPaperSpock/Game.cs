@@ -16,18 +16,37 @@ namespace RockPaperSpock
         Player playerTwo;
         public List<string> playerNames;
         public int numberOfPlayers;
-        Random randomInt = new Random();
+        Random randomInt;
 
         public Game()
         {
-            playerOne = new Player();
-            playerTwo = new Player();
-            playerNames = new List<string>();
+            randomInt = new Random();
         }
+
+
         public void RunGame()
         {
+            GetNumberOfPlayers();
+            CreatePlayer();
+            playerOne.GetPlayerInput();
+            playerTwo.GetPlayerInput();
+            GetRoundResult();
+            KeepTrackScore();
+        }
+        public void KeepTrackScore()
+        {
+            while (scorePlayerOne < 3 && scorePlayerTwo < 3)
+            {
+                playerOne.GetPlayerInput();
+                playerTwo.GetPlayerInput();
+                GetRoundResult();
+                CheckFinalScore();
+            }
+        }
+        public void GetRoundResult()
+        {
             int thisRound;
-            thisRound = (5 + playerOneInput - playerTwoInput) % 5;
+            thisRound = (5 + playerOne.playerInput - playerTwo.playerInput) % 5;
             if (thisRound == 1 || thisRound == 3)
             {
                 Console.WriteLine("{0} wins the round!", playerOne.name);
@@ -44,77 +63,43 @@ namespace RockPaperSpock
             }
         }
 
-        public int GetPlayerOneInput()
-        {
-            Console.WriteLine("{0} Choose:\n [1]Rock, [2]Paper, [3]Scissors, [4]Lizard or [5]Spock: ", playerOne.name);
-            int tempInput = Convert.ToInt32(Console.ReadLine());
-            playerOneInput = tempInput;
-            return playerOneInput;
-
-        }
-        public int GetPlayerTwoInput()
-        {
-            if (playerTwo.name == "Computer")
-            {
-                //GetComputerSelection();
-                //return playerTwoInput;
-                Random random = new Random();
-                int randomInt;
-                randomInt = random.Next(1, 6);
-                playerTwoInput = randomInt;
-                return playerTwoInput;
-            }
-            else
-            {
-                Console.WriteLine("{0} Choose:\n [1]Rock, [2]Paper, [3]Scissors, [4]Lizard or [5]Spock: ", playerTwo.name);
-                int tempInput = Convert.ToInt32(Console.ReadLine());
-                playerTwoInput = tempInput;
-                return playerTwoInput;
-            }
-
-        }
+        
         public int GetNumberOfPlayers()
         {
             Console.WriteLine("How many players? 1 or 2");
             numberOfPlayers = int.Parse(Console.ReadLine());
-            return numberOfPlayers;
-        }
-        public void SetNumberOfPlayers()
-        {
-            if (numberOfPlayers == 2)
+            if (numberOfPlayers == 1 || numberOfPlayers == 2)
             {
-                for(int i = 0; i < numberOfPlayers; i++)
-                {
-                    CreatePlayer();
-                }
-                playerOne.name = playerNames[0];
-                playerTwo.name = playerNames[1];
-
+                return numberOfPlayers;
             }
-            else if (numberOfPlayers == 1)
-            {
-                CreatePlayer();
-                CreateCpu();
-                playerOne.name = playerNames[0];
-                playerTwo.name = playerNames[1];
-            }
-            else if (numberOfPlayers != 1 || numberOfPlayers != 2)
+            else 
             {
                 Console.WriteLine("Invalid Choice, Please Choose 1 or 2 Players.");
                 GetNumberOfPlayers();
+                return numberOfPlayers;
             }
+
+
+
         }
-        public List<string> CreatePlayer()
+        
+        public void CreatePlayer()
         {
-            Console.WriteLine("Please Enter Your Name:");
-            string playerName = Console.ReadLine();
-            playerNames.Add(playerName);
-            return playerNames;
-        }
-        public List<string> CreateCpu()
-        {
-            playerNames.Add("Computer");
-            return playerNames;
+            
+            if (numberOfPlayers == 1)
+            {
+                playerOne = new Human();
+                playerTwo = new Computer();
+                playerOne.GetPlayerName();
+                playerTwo.GetPlayerName();
+            }
+            else if (numberOfPlayers == 2)
+            {
+                playerOne = new Human();
+                playerTwo = new Human();
+                playerOne.GetPlayerName();
+                playerTwo.GetPlayerName();
+            }
         }
 
         
@@ -129,17 +114,59 @@ namespace RockPaperSpock
                 Console.WriteLine("{0} wins the game!! \n", playerTwo.name);
             }
         }
-        public void KeepTrackScore()
-        {
-            while (scorePlayerOne < 3 && scorePlayerTwo < 3)
-            {
-                GetPlayerOneInput();
-                GetPlayerTwoInput();
-                RunGame();
-                CheckFinalScore();
-            }
-        }
         
+        //public void SetNumberOfPlayers()
+        //{
+        //    if (numberOfPlayers == 2)
+        //    {
+        //        for(int i = 0; i < numberOfPlayers; i++)
+        //        {
+        //            CreatePlayer();
+        //        }
+        //        playerOne.name = playerNames[0];
+        //        playerTwo.name = playerNames[1];
+
+        //    }
+        //    else if (numberOfPlayers == 1)
+        //    {
+        //        CreatePlayer();
+        //        CreateCpu();
+        //        playerOne.name = playerNames[0];
+        //        playerTwo.name = playerNames[1];
+        //    }
+        //    else if (numberOfPlayers != 1 || numberOfPlayers != 2)
+        //    {
+        //        Console.WriteLine("Invalid Choice, Please Choose 1 or 2 Players.");
+        //        GetNumberOfPlayers();
+        //    }
+        //}
+        //public int GetPlayerOneInput()
+        //{
+        //    Console.WriteLine("{0} Choose:\n [1]Rock, [2]Paper, [3]Scissors, [4]Lizard or [5]Spock: ", playerOne.name);
+        //    int tempInput = Convert.ToInt32(Console.ReadLine());
+        //    playerOneInput = tempInput;
+        //    return playerOneInput;
+
+        //}
+        //public int GetPlayerTwoInput()
+        //{
+        //    if (player.name == "Computer")
+        //    {
+        //        Random random = new Random();
+        //        int randomInt;
+        //        randomInt = random.Next(1, 6);
+        //        playerTwoInput = randomInt;
+        //        return playerTwoInput;
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("{0} Choose:\n [1]Rock, [2]Paper, [3]Scissors, [4]Lizard or [5]Spock: ", playerTwo.name);
+        //        int tempInput = Convert.ToInt32(Console.ReadLine());
+        //        playerTwoInput = tempInput;
+        //        return playerTwoInput;
+        //    }
+
+        //}
 
     }
 }

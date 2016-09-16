@@ -8,27 +8,29 @@ namespace RockPaperSpock
 {
     public class Player
     {
-        //public string playerOne;
-        //public string playerTwo;
-        public int numberOfPlayers;
+        
         public string name;
-        Random randomInt = new Random();
-        public int playerOneInput;
-        public int playerTwoInput;
-
+        public int playerInput;
 
 
         public Player()
         {
 
         }
-        public int GetComputerSelection()
+        public virtual string GetPlayerName()
         {
-            Random random = new Random();
-            int randomInt;
-            randomInt = random.Next(1, 6);
-            playerTwoInput = randomInt;
-            return playerTwoInput;
+            Console.WriteLine("Please Enter Your Name:");
+            name = Console.ReadLine();
+            return name;
+        }
+        public virtual int GetPlayerInput()
+        {
+            
+                Console.WriteLine("{0} Choose:\n [1]Rock, [2]Paper, [3]Scissors, [4]Lizard or [5]Spock: ", name);
+                int tempInput = Convert.ToInt32(Console.ReadLine());
+                playerInput = tempInput;
+                return playerInput;          
+                      
         }
 
     }
