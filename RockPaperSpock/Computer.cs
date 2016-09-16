@@ -8,7 +8,11 @@ namespace RockPaperSpock
 {
     public class Computer : Player
     {
-        Random randomInt = new Random();
+        Random randomInt;
+        public Computer()
+        {
+            randomInt = new Random();
+        }
         
 
         public override string GetPlayerName()
